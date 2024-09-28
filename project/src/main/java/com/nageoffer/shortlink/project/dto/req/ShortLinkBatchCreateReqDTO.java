@@ -4,23 +4,30 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
-public class ShortLinkUpdateReqDTO {
-    /**
-     * 原始链接
-     */
-    private String originUrl;
+public class ShortLinkBatchCreateReqDTO {
 
     /**
-     * 完整短链接
+     * 原始链接集合
      */
-    private String fullShortUrl;
+    private List<String> originUrls;
+
+    /**
+     * 描述集合
+     */
+    private List<String> describes;
 
     /**
      * 分组标识
      */
     private String gid;
+
+    /**
+     * 创建类型 0：接口创建 1：控制台创建
+     */
+    private Integer createdType;
 
     /**
      * 有效期类型 0：永久有效 1：自定义
@@ -32,9 +39,4 @@ public class ShortLinkUpdateReqDTO {
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date validDate;
-
-    /**
-     * 描述
-     */
-    private String describe;
 }
