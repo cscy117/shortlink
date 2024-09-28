@@ -24,6 +24,15 @@ short-link:
   stats:
     locale:
       amap-key: 3b316a0b07686bb0b1181cc67de02cec
+  goto-domain:
+    white-list:
+      enable: true
+      names: '拿个offer,知乎,掘金,博客园'
+      details:
+        - nageoffer.com
+        - zhihu.com
+        - juejin.cn
+        - cnblogs.com
 
 mybatis-plus:
   configuration:
