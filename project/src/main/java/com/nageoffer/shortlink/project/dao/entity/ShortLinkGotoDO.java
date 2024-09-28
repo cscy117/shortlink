@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @TableName("t_link_goto")
 @NoArgsConstructor
 @AllArgsConstructor
-public class ShortLinkGotoDo {
+public class ShortLinkGotoDO {
     private Long id;
     private String gid;
     private String fullShortUrl;
