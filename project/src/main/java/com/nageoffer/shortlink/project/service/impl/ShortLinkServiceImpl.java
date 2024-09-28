@@ -251,6 +251,8 @@ public class ShortLinkServiceImpl extends ServiceImpl<ShortLinkMapper,ShortLinkD
                     .eq(ShortLinkDO::getDelFlag, 0)
                     .eq(ShortLinkDO::getEnableStatus, 0);
             ShortLinkDO shortLinkDO = baseMapper.selectOne(queryWrapper);
+            //增加判空条件，使得移入回收站之后再恢复仍然可以正常跳转
+            //如果getValidDate为空则代表永久有效
             if(shortLinkDO==null || (shortLinkDO.getValidDate()!=null&& shortLinkDO.getValidDate().before(new Date()))) {
                 stringRedisTemplate.opsForValue().set(String.format(GOTO_IS_NULL_SHORT_LINK_KEY,fullShortUrl),"-",30,TimeUnit.DAYS);
                 ((HttpServletResponse) response).sendRedirect("/page/notfound");
