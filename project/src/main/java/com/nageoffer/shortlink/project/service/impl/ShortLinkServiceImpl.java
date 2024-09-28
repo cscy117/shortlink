@@ -188,9 +188,12 @@ public class ShortLinkServiceImpl extends ServiceImpl<ShortLinkMapper,ShortLinkD
             baseMapper.delete(updateWrapper);
             baseMapper.insert(shortLinkDO);
         }
+        //update短链接需要更新缓存
+        // 如果有效期类型或者有效期发生了变化则需要删除缓存
         if (!Objects.equals(hasShortLinkDO.getValidDateType(), requestParam.getValidDateType())
                 || !Objects.equals(hasShortLinkDO.getValidDate(), requestParam.getValidDate())) {
             stringRedisTemplate.delete(String.format(GOTO_SHORT_LINK_KEY, requestParam.getFullShortUrl()));
+            // 如果新连接没有过期，则需要删除原来的isnull的缓存
             if (hasShortLinkDO.getValidDate() != null && hasShortLinkDO.getValidDate().before(new Date())) {
                 if (Objects.equals(requestParam.getValidDateType(), ValidDateTypeEnum.PERMANENT.getType()) || requestParam.getValidDate().after(new Date())) {
                     stringRedisTemplate.delete(String.format(GOTO_IS_NULL_SHORT_LINK_KEY, requestParam.getFullShortUrl()));
