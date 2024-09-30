@@ -7,14 +7,13 @@ import org.redisson.api.RBlockingDeque;
 import org.redisson.api.RDelayedQueue;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.stereotype.Component;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.locks.LockSupport;
 
 import static com.nageoffer.shortlink.project.common.constant.RedisKeyConstant.DELAY_QUEUE_STATS_KEY;
 
-@Component
+//@Component
 @RequiredArgsConstructor
 public class DelayShortLinkStatsConsumer implements InitializingBean {
 
