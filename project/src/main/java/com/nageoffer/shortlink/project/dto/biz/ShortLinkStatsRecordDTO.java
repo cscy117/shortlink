@@ -55,4 +55,6 @@ public class ShortLinkStatsRecordDTO {
      * UIP访问标识
      */
     private Boolean uipFirstFlag;
+
+    private String keys;
 }
