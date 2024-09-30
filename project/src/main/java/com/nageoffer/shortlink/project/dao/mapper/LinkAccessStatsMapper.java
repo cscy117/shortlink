@@ -17,8 +17,8 @@ import java.util.List;
  * @since 2024-09-14 14:46:07
  */
 public interface LinkAccessStatsMapper extends BaseMapper<LinkAccessStatsDO> {
-    @Insert("INSERT INTO t_link_access_stats (full_short_url,gid,date,pv,uv,uip,HOUR,weekday,create_time,update_time,del_flag)\n" +
-            "VALUES (#{linkAccessStats.fullShortUrl},#{linkAccessStats.gid},#{linkAccessStats.date},#{linkAccessStats.pv},#{linkAccessStats.uv},#{linkAccessStats.uip},#{linkAccessStats.hour},#{linkAccessStats.weekday},NOW(),NOW(),0) \n" +
+    @Insert("INSERT INTO t_link_access_stats (full_short_url,date,pv,uv,uip,HOUR,weekday,create_time,update_time,del_flag)\n" +
+            "VALUES (#{linkAccessStats.fullShortUrl},#{linkAccessStats.date},#{linkAccessStats.pv},#{linkAccessStats.uv},#{linkAccessStats.uip},#{linkAccessStats.hour},#{linkAccessStats.weekday},NOW(),NOW(),0) \n" +
             "ON DUPLICATE KEY UPDATE pv = pv + #{linkAccessStats.pv},uv = uv + #{linkAccessStats.uv},uip = uip + #{linkAccessStats.uip},create_time=create_time,update_time=NOW();")
     void shortLinkStats(@Param("linkAccessStats") LinkAccessStatsDO linkAccessStatsDO);
 

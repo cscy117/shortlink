@@ -12,8 +12,8 @@ import java.util.List;
 
 
 public interface LinkNetworkStatsMapper extends BaseMapper<LinkNetworkStatsDO> {
-    @Insert("INSERT INTO t_link_network_stats (full_short_url,gid,date,cnt,network,create_time,update_time,del_flag)\n" +
-            "VALUES (#{linkNetworkStats.fullShortUrl},#{linkNetworkStats.gid},#{linkNetworkStats.date},#{linkNetworkStats.cnt},#{linkNetworkStats.network},NOW(),NOW(),0) \n" +
+    @Insert("INSERT INTO t_link_network_stats (full_short_url,date,cnt,network,create_time,update_time,del_flag)\n" +
+            "VALUES (#{linkNetworkStats.fullShortUrl},#{linkNetworkStats.date},#{linkNetworkStats.cnt},#{linkNetworkStats.network},NOW(),NOW(),0) \n" +
             "ON DUPLICATE KEY UPDATE cnt = cnt + #{linkNetworkStats.cnt},create_time=create_time,update_time=NOW();")
     void shortLinkNetworkStats(@Param("linkNetworkStats") LinkNetworkStatsDO linkNetworkStatsDO);
 

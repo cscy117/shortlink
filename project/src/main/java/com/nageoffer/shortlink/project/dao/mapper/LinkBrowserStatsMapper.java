@@ -13,8 +13,8 @@ import java.util.List;
 
 
 public interface LinkBrowserStatsMapper extends BaseMapper<LinkBrowserStatsDO> {
-    @Insert("INSERT INTO t_link_browser_stats (full_short_url,gid,date,cnt,browser,create_time,update_time,del_flag)\n" +
-            "VALUES (#{linkBrowserStats.fullShortUrl},#{linkBrowserStats.gid},#{linkBrowserStats.date},#{linkBrowserStats.cnt},#{linkBrowserStats.browser},NOW(),NOW(),0) \n" +
+    @Insert("INSERT INTO t_link_browser_stats (full_short_url,date,cnt,browser,create_time,update_time,del_flag)\n" +
+            "VALUES (#{linkBrowserStats.fullShortUrl},#{linkBrowserStats.date},#{linkBrowserStats.cnt},#{linkBrowserStats.browser},NOW(),NOW(),0) \n" +
             "ON DUPLICATE KEY UPDATE cnt = cnt + #{linkBrowserStats.cnt},create_time=create_time,update_time=NOW();")
     void shortLinkBrowserStats(@Param("linkBrowserStats") LinkBrowserStatsDO linkBrowserStatsDO);
 

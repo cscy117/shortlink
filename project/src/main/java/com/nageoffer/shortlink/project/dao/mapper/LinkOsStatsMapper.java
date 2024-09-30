@@ -13,8 +13,8 @@ import java.util.List;
 
 
 public interface LinkOsStatsMapper extends BaseMapper<LinkOsStatsDO> {
-    @Insert("INSERT INTO t_link_os_stats (full_short_url,gid,date,cnt,os,create_time,update_time,del_flag)\n" +
-            "VALUES (#{linkOsStats.fullShortUrl},#{linkOsStats.gid},#{linkOsStats.date},#{linkOsStats.cnt},#{linkOsStats.os},NOW(),NOW(),0) \n" +
+    @Insert("INSERT INTO t_link_os_stats (full_short_url,date,cnt,os,create_time,update_time,del_flag)\n" +
+            "VALUES (#{linkOsStats.fullShortUrl},#{linkOsStats.date},#{linkOsStats.cnt},#{linkOsStats.os},NOW(),NOW(),0) \n" +
             "ON DUPLICATE KEY UPDATE cnt = cnt + #{linkOsStats.cnt},create_time=create_time,update_time=NOW();")
     void shortLinkOsStats(@Param("linkOsStats") LinkOsStatsDO linkOsStatsDO);
 

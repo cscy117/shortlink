@@ -1,5 +1,6 @@
 package com.nageoffer.shortlink.project.dao.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.nageoffer.shortlink.project.common.database.BaseDO;
@@ -27,6 +28,7 @@ public class LinkStatsTodayDO extends BaseDO {
     @TableId
     private Long id;
     //分组标识
+    @TableField(exist = false)
     private String gid;
     //短链接
     private String fullShortUrl;
